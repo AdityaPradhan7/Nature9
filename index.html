@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Creation Form</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    
+    
+    <h1>Create New Account</h1>
+    <form id="accountForm">
+        <label for="name">Account Holder Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="currency">Currency</label>
+        <div class="dropdown">
+            <input type="text" id="currencyInput" autocomplete="off" required>
+            <ul id="currencyList" class="dropdown-options">
+                <li data-value="INR">INR - Indian Rupee</li>
+                <li data-value="USD">USD - US Dollar</li>
+                <li data-value="EUR">EUR - Euro</li>
+                <li data-value="GBP">GBP - British Pound</li>
+                <li data-value="AUD">AUD - Australian Dollar</li>
+                <li data-value="CAD">CAD - Canadian Dollar</li>
+                <li data-value="JPY">JPY - Japanese Yen</li>
+                <li data-value="CNY">CNY - Chinese Yuan</li>
+                <li data-value="AED">AED - UAE Dirham</li>
+            </ul>
+        </div>
+        <input type="hidden" id="currency" name="currency" >
+
+        <label for="dob">DOB</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <label for="balance">Initial Balance</label>
+        <input type="number" id="balance" name="balance" step="0.01" required>
+
+        <label for="pin">Transaction PIN</label>
+        <div class="password-wrapper">
+            <input type="password" id="pin" name="pin" required minlength="6">
+            <span class="toggle-eye" id="toggleEye">{•}</span>
+        </div>
+
+        <button type="submit">Create Account</button>
+    </form>
+
+    <div class="money-transfer">
+        <a href="money-transfer.html" id="money-transfer">Go to Money Transfer</a>
+    </div>
+
+    <script src="script1.js"></script>
+</body>
+</html>

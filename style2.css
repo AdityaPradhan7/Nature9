@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+form {
+    max-width: 490px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center; /* Align items horizontally */
+    margin-bottom: 15px;
+}
+
+label {
+    flex: 0 0 140px; /* Increase label width */
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+input {
+    margin-left: 10px; /* Space between label and input */
+    width: 200px; /* Set a fixed width for input */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#toAccount{
+    margin-left: 11px;
+}
+
+button {
+    margin-left: 13px;
+    padding: 6px 12px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#transferButton {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #1900bd;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#transferButton:hover {
+    background-color: #08007e;
+}
+
+.backButton {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 10px 15px;
+    background-color: #cc0000;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.backButton:hover {
+    background-color: #bc0000;
+}
+
+#toggleEye {
+    cursor: pointer;
+    font-size: 20px; /* Adjust size as needed */
+    margin-left: 13px; /* Space from the left */
+}
+
+#toggleEye:hover {
+    color: #770000; /* Change color on hover for better UX */
+}
+
+

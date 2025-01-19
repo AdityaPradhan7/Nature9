@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Transfer</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <h1>Money Transfer</h1>
+    <form id="transferForm">
+        <div class="form-group">
+            <label for="fromAccount">From Account No:</label>
+            <input type="text" id="fromAccount" name="fromAccount" required>
+            <button type="button" id="validateFrom">VALIDATE</button>
+        </div>
+        <div class="form-group">
+            <label for="toAccount">To Account No:</label>
+            <input type="text" id="toAccount" name="toAccount" required>
+            <button type="button" id="validateTo">VALIDATE</button>
+        </div>
+        <div class="form-group">
+            <label for="transactionPIN">Transaction PIN:</label>
+            <input type="password" id="transactionPIN" name="transactionPIN" required>
+            <span id="toggleEye">{•}</span>
+        </div>
+        <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input type="float" id="amount" name="amount" required>
+        </div>
+        <div class="form-group">
+            <label for="remark">Remark (optional):</label>
+            <input type="text" id="remark" name="remark">
+        </div>
+        <button type="submit" id="transferButton">Transfer</button>
+    </form>
+
+    <a href="index.html" class="backButton">Create New Account</a>
+
+    <script src="script2.js"></script>
+</body>
+</html>
