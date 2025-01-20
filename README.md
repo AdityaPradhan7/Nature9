@@ -35,7 +35,7 @@ For backend development, I used the Syncloop platform to create APIs for account
 addAccounts (POST): Adds a new account to the accounts table in the database.
 #### APIs for Money Transfer Page
 - ValidateAccount (GET): Verifies if the entered account number exists in the database.
-- currencyConversion (GET):Handles currency conversion if the sender's and receiver's currencies differ. Utilizes the Frankfurter API (a free, open-source currency data API) inside Syncloop.
+- currencyConversion (GET):Handles currency conversion if the sender's and receiver's currencies differ. Utilizes the Frankfurter API, a free and open-source currency data API, inside Syncloop.
 - updateBalanceAPI (PATCH): Updates the balances of both sender and receiver when 'transfer' is clicked.
 
 ## Database
