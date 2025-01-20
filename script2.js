@@ -18,7 +18,7 @@ let receiverCurrency ='';
 let senderBalance='';
 let receiverBalance ='';
 
-const token = 'RDJnjlX3wdjJbDZrJ04Jc6KG9KzqOskEIpWGFbpFt+IOMifPmWLjOpTWyGaaaUKiV3BxbNlJX/gxUorMejlg7kgboALB2lkPGwDOSYrJw5wNM9YpNMe7uPoP42hxnqB32LR7k5cdReUILlwbqGxBKhdYcoRWSKIHHFHt7BBpwiWRPiDh7fz6JSPIP2Vc/HcmzeDFJRrBUZbfnNbpLTcaaXRyVETvxR9s58M7f9oTogNlAQkILvnIHNMDgphwrr90wwecPrEn5h/lpX63wf4BCQz4w7zaT+DHTVod4xD/x0SKZzENxjIxgW4MgsTuedbPRqLV1dK7KO/H1mp0TT9MZRgD+Fv41SKFTYN1ZVVrchZlqwGKvZZ7e7g0vQcF3XPR2dzv1rr3vSFZ4ay+aqeeup2uEy/RQLkkYJSvyETiL26EQadZeD2m1OEHXpTB6HT7pOwIp3haf6pMfi5qA1oLHRtH+RlnpclWy4lneDo7FmAd9kwdjEvK5Hj1aCNZuPs6tGFjOKcebfzcJCca//r0y9vJ8/vwreLw/4TwRvdMFW5VScpbzgL3bLqlGQIYYYvZNP0/LfzHZ4PjLm+5YwzCTIzJK3mOZxJvqma3UM/MBVpiC4W4zIWbWVxWYue+vBraJ3w54VRPW5SCBBM9FPcqu63XLtnjCgx5JtizOXF4h98=';
+const token = 'hg4zEVZKKMfrygDnG6swMqoz3gRzZMShIGr0OeCsrC8/sL/i8zG+6EFjr7uNeh0/VYwRvra7SAxyZDL5MMx9WtDJ5j82vI/ucDI9D8/9+83dNpEi3w4yu1vPBVqEQzEfLAB6+CmzbgA+LGvSRus6ds+CRYTCCYUj/nbn3uhQC8BQok6yaAA+4Muv9PwbqwO7sAa/RrxSlzs6R6C/2Qm+Zh6VgTW0rqS2UphGDtV7Jq6SJfMD6S7wHGrsv4fkwyCqp2wZjR5bj8fhzm6rrZ8wmIlOL8iAWwfZ/ybWiq+dlPpByGTzgD1ozps/Yb04PaoTZm6ZJDRfDXtaWwLE6sNoNfkSE0r6uaxUbLegxuupI/XevBeFEcuYgOmdEPSPVRK005y6kBZJ/oicM8qNvcczregTfwlqBWqBCJrsFEhrFEJs+jnG2Z43QfXvCW9+5fcyPArGhj+wWsEDsc1FxZFlYmrLlDo7yeCa8iBs2oSYrIJY4L7ATljyTlsUOMaWMLoXYEr8YYhs/QqkUNeDmzsFvot56cJndsuOmh1DVyD2IC9BTXfi/TZ7AbHU1WSlh8ptcAk5zkwOQhUdIE0HNBrrXP0val2i/gPb9dRA2GkZHzXENmVhpWt+l9T2opYAonMNgdNwOxX2DFENkrI7Iz0X1c+hD8Xc7TuEIbfbsIelosY=';
 
 document.getElementById('validateFrom').addEventListener('click', function () {
     const fromAccount = document.getElementById('fromAccount').value;
@@ -30,7 +30,7 @@ document.getElementById('validateFrom').addEventListener('click', function () {
     }
 
     // Make an API call to check if the account exists
-    fetch(`http://localhost:8080/tenant/default/packages.DataBase.api.ValidateAccount.main?AccountNumber=${fromAccount}`, {
+    fetch(`http://localhost:8080/tenant/default/User/VALIDATE/ACCOUNT?AccountNumber=${fromAccount}`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
@@ -90,7 +90,7 @@ document.getElementById('validateTo').addEventListener('click', function () {
     }
 
     // Make an API call to check if the account exists
-    fetch(`http://localhost:8080/tenant/default/packages.DataBase.api.ValidateAccount.main?AccountNumber=${toAccount}`, {
+    fetch(`http://localhost:8080/tenant/default/User/VALIDATE/ACCOUNT?AccountNumber=${toAccount}`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
@@ -138,7 +138,19 @@ document.getElementById('toAccount').addEventListener('input', function () {
 });
 
 
-let senderFinalBalance=1;
+// Amount validation (prevent zero or negative values)
+const amountInput = document.getElementById('amount');
+amountInput.addEventListener('input', function() {
+    const amount = parseFloat(amountInput.value);
+
+    if (amount <= 0 ) {
+        amountInput.setCustomValidity('Amount must be greater than zero.');
+    } else {
+        amountInput.setCustomValidity(''); // Clear custom error if the value is valid
+    }
+});
+
+
 
 // Handle form submission
 document.getElementById('transferForm').addEventListener('submit', function (event) {
@@ -158,11 +170,6 @@ document.getElementById('transferForm').addEventListener('submit', function (eve
     const fromAccount = document.getElementById('fromAccount').value;
     const toAccount = document.getElementById('toAccount').value;
     const amount = parseFloat(document.getElementById('amount').value);
-
-    if (amount <= 0) {
-        alert(amount === 0 ? 'Amount cannot be 0' : 'Amount cannot be negative');
-        return;
-    }
     
 
     // Check if sender's balance is less than the amount they want to send
@@ -172,7 +179,7 @@ document.getElementById('transferForm').addEventListener('submit', function (eve
     }
 
     if (senderCurrency !== receiverCurrency) {
-        const conversionAPI = `http://localhost:8080/tenant/default/packages.DataBase.api.currencyConversion.main?base=${senderCurrency}&symbols=${receiverCurrency}`;
+        const conversionAPI = `http://localhost:8080/tenant/default/User/CURRENCY/CONVERT?base=${senderCurrency}&symbols=${receiverCurrency}`;
 
         fetch(conversionAPI, {
             method: 'GET',
@@ -190,27 +197,32 @@ document.getElementById('transferForm').addEventListener('submit', function (eve
                 const conversionRate = conversionData.response.jsonDoc.rates[receiverCurrency];
                 const convertedAmount = amount * conversionRate;
 
-                senderFinalBalance = senderBalance-amount;
-
-                updateSenderBalance(fromAccount, senderFinalBalance);
-                updateReceiverBalance(toAccount, receiverBalance+convertedAmount);
+                senderBalance = senderBalance-amount;
+                receiverBalance = receiverBalance+convertedAmount;
+                
+                updateSenderBalance(fromAccount, senderBalance);
+                updateReceiverBalance(toAccount, receiverBalance);
+                
             })
             .catch((error) => {
                 alert('Currency conversion failed.');
             });
     } else {
-        updateSenderBalance(fromAccount, senderBalance-amount);
-        updateReceiverBalance(toAccount, receiverBalance+amount);
+        senderBalance = senderBalance-amount;
+        receiverBalance = receiverBalance+amount;
+
+        updateSenderBalance(fromAccount, senderBalance);
+        updateReceiverBalance(toAccount, receiverBalance);
     }
 });
 
 
-function updateSenderBalance(fromAccount, amount) {
-    const transferAPI = 'http://localhost:8080/tenant/default/packages.DataBase.api.updateBalanceAPI.main';
+function updateSenderBalance(fromAccount, newAmount) {
+    const transferAPI = 'http://localhost:8080/tenant/default/User/TRANSFER';
 
     const senderUpdateData = {
         AccountNumber: fromAccount,
-        Balance: amount // update sender's balance
+        Balance: newAmount // update sender's balance
     };
 
     fetch(transferAPI, {
@@ -232,12 +244,12 @@ function updateSenderBalance(fromAccount, amount) {
         });
 }
 
-function updateReceiverBalance(toAccount, amount) {
-    const transferAPI = 'http://localhost:8080/tenant/default/packages.DataBase.api.updateBalanceAPI.main';
+function updateReceiverBalance(toAccount, newAmount) {
+    const transferAPI = 'http://localhost:8080/tenant/default/User/TRANSFER';
 
     const receiverUpdateData = {
         AccountNumber: toAccount,
-        Balance: amount // update receiver's balance
+        Balance: newAmount // update receiver's balance
     };
 
     fetch(transferAPI, {
@@ -252,7 +264,7 @@ function updateReceiverBalance(toAccount, amount) {
             if (!response.ok) {
                 throw new Error('Failed to update receiver balance.');
             }
-            alert(`Money transferred successfully!\nYour current balance is ${senderFinalBalance} ${senderCurrency}.`);
+            alert(`Money transferred successfully!\nYour current balance is ${senderBalance} ${senderCurrency}.`);
         })
         .catch((error) => {
             // console.error(error.messege);
