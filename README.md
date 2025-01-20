@@ -23,6 +23,7 @@ The frontend consists of 2 webpages:
 
 ## API Development with Syncloop
 For backend development, I used the Syncloop platform to create APIs for account management and money transfers.
+
 <img width="133" alt="Capture" src="https://github.com/user-attachments/assets/24964e0c-82bb-4dbe-94f2-2dab98a023bb" />
 
 #### Workflow
@@ -39,6 +40,7 @@ addAccounts: Adds a new account to the accounts table in the database.
 
 ## Database
 The MySQL database used for this project contains a single table called "accounts" with the following structure:
+
 <img width="507" alt="dataphoto" src="https://github.com/user-attachments/assets/ba6efb32-60e7-4fc9-8dcb-e536b9caa185" />
 
 ## Features
