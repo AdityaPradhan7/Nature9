@@ -32,11 +32,14 @@ For backend development, I used the Syncloop platform to create APIs for account
 3. Integrated these SQL services into the following APIs (except currencyConversion):
 
 #### APIs for Account Creation Page
-addAccounts (POST): Adds a new account to the accounts table in the database.
+*addAccounts (POST)*: Adds a new account to the accounts table in the database. Takes user inputs as request payload and returns user's account number (auto-incremented) as a response.
+
 #### APIs for Money Transfer Page
-- ValidateAccount (GET): Verifies if the entered account number exists in the database.
-- currencyConversion (GET):Handles currency conversion if the sender's and receiver's currencies differ. Utilizes the Frankfurter API, a free and open-source currency data API, inside Syncloop.
-- updateBalanceAPI (PATCH): Updates the balances of both sender and receiver when 'transfer' is clicked.
+- *ValidateAccount (GET)*: Verifies if the account number entered as query parameter exists in the database, returns account's currency, balance and transaction PIN as response. 
+
+- *currencyConversion (GET)*:Handles currency conversion if the sender's and receiver's currencies differ. Utilizes the Frankfurter API, a free and open-source currency data API, inside Syncloop.
+
+- *updateBalanceAPI (PATCH)*: Updates the balances of both sender and receiver when 'transfer' is clicked. Takes Account number and Balance as request payload.
 
 ## Database
 The MySQL database used for this project contains a single table called "accounts" with the following structure:
