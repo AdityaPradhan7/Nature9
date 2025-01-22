@@ -19,7 +19,7 @@ The frontend consists of 2 webpages:
 ![Screenshot (924)](https://github.com/user-attachments/assets/a97850bc-29c1-4c36-b52e-7663141da744)
 - Validates account numbers and ensures sufficient balance before processing.
 - Allows users to transfer money between accounts, supporting both same-currency and cross-currency transactions.
-- Files - money-transfer.html, style1.css, script1.js
+- Files - money-transfer.html, style2.css, script2.js
 
 ## API Development with Syncloop
 For backend development, I used the Syncloop platform to create APIs for account management and money transfers.
