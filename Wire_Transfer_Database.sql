@@ -14,7 +14,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-CREATE DATABASE wire_transfer;
+CREATE DATABASE IF NOT EXISTS wire_transfer;
 USE wire_transfer;
 -- Dumping structure for table student.accounts
 CREATE TABLE IF NOT EXISTS accounts (
