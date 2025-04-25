@@ -1,5 +1,5 @@
 
-# Wire Transfer System
+# Wire Money Transfer System
 
 A full-stack web application for creating accounts and handling money transfers, including cross-currency transactions.
 
